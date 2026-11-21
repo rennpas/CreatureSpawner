@@ -1,0 +1,16 @@
+Creature Spawner 1.0.0 - como compilar (feito com o csc.dll do SDK do dotnet, Windows)
+
+Referencias (NAO incluidas aqui, sao do jogo): copiar da pasta do Hollow Knight, hollow_knight_Data\Managed\:
+  Assembly-CSharp.dll (a versao do Modding API), PlayMaker.dll, mscorlib.dll, netstandard.dll, System.dll, System.Core.dll,
+  UnityEngine.dll, UnityEngine.CoreModule.dll, UnityEngine.AssetBundleModule.dll, UnityEngine.IMGUIModule.dll,
+  UnityEngine.InputLegacyModule.dll, UnityEngine.Physics2DModule.dll
+  -> colocar numa pasta "refs".
+
+Comando (Git Bash), dentro desta pasta:
+  dotnet "<SDK>\Roslyn\bincore\csc.dll" -nologo -target:library -out:CreatureSpawner.dll -nostdlib -langversion:latest \
+      -r:refs\Assembly-CSharp.dll ... (todas as DLLs acima) src\*.cs
+
+Instalar: copiar CreatureSpawner.dll (+ ReadMe.md) para
+  Hollow Knight\hollow_knight_Data\Managed\Mods\CreatureSpawner\   (so com o jogo fechado)
+
+Chave util: src\BrokenVesselFix.cs -> KeepFlyingScuttlers (false = original; true = bichinhos arremessados).
